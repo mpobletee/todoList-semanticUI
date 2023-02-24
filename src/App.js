@@ -31,11 +31,18 @@ function App() {
     setTasks(currentTask);
   }
 
+  const updateTask = (updatedTask) => {
+    const updatedTasks = tasks.map((task) =>
+      task.idTask === updatedTask.idTask ? updatedTask : task
+    );
+    setTasks(updatedTasks);
+  };
+
   return (
     <Container>
       <Header />
       <InputTask createTask={createTask} />
-      <TaskContent tasks={tasks} deleteTask={deleteTask}/>
+      <TaskContent tasks={tasks} deleteTask={deleteTask} updateTask={updateTask}/>
     </Container>
   );
 }
